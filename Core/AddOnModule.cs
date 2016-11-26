@@ -8,9 +8,10 @@ using System.IO.Compression;
 
 namespace WzAddonTosser.Core
 {
-    class AddOnModule
+    public class AddOnModule
     {
         public string Name { get; protected set;  }
+
         public AddOnTOC TOC { get; protected set;  }
 
         public DirectoryInfo WorkingDir { get; protected set; }

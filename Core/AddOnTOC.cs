@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WzAddonTosser.Core
 {
-    class AddOnTOC
+    public class AddOnTOC
     {
         public string Version { get; protected set; }
         public string WoWVersion { get; protected set; }

@@ -1,0 +1,8 @@
+D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\Tests.Core.dll
+D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\Tests.Core.pdb
+D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\WzAddonTosser.Core.dll
+D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\WzAddonTosser.Core.pdb
+D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.csprojResolveAssemblyReference.cache
+D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.dll
+D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.pdb

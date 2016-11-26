@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("wzAddonTosser.Main")]
+[assembly: AssemblyTitle("Tests.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany(WzAddonTosser.Core.wzatVersionInfo.Company)]
-[assembly: AssemblyProduct(WzAddonTosser.Core.wzatVersionInfo.ProductName)]
-[assembly: AssemblyCopyright(WzAddonTosser.Core.wzatVersionInfo.Copyright)]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Tests.Core")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("61c62368-844f-4d0e-9667-3df8c0efa907")]
+[assembly: Guid("da578104-1a38-4e67-a811-5e26e71c8e30")]
 
 // Version information for an assembly consists of the following four values:
 //

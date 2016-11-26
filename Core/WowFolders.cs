@@ -13,6 +13,8 @@ namespace WzAddonTosser.Core
         public DirectoryInfo AddonsFolder { get; protected set; }
         public DirectoryInfo AddonDataFolder { get; protected set; }
 
+        public string FullName { get; protected set; }
+
         protected DirectoryInfo rootFolder = null;
 
         public WowFolders(DirectoryInfo wowfolder)
@@ -22,6 +24,8 @@ namespace WzAddonTosser.Core
                 throw new ArgumentException("the path '" + wowfolder.FullName + "' does not contain WoW");
 
             rootFolder = wowfolder;
+            this.FullName = rootFolder.FullName;
+
             AddonsFolder = wowfolder.GetDirectory("Interface").GetDirectory("Addons");
             AddonDataFolder = wowfolder.GetDirectory("WTF");
         }

@@ -21,8 +21,12 @@ namespace WzAddonTosser.Core
 
             Logger.RegisterLogger(logger);
         }
-        public void Process()
+        public virtual void Process()
         {
+            Logger.Current.Log(EntryType.Information, "Downloads Folder  : {0}", TosserConfig.Current.SourceFolder.FullName);
+            Logger.Current.Log(EntryType.Information, "WoW Folder        : {0}", TosserConfig.Current.WoWFolder.FullName);
+            Logger.Current.Log(EntryType.Information, "Backup Folder     : {0}", TosserConfig.Current.BackupFolder.FullName);
+
             var files = TosserConfig.Current.SourceFolder.GetFiles("*.zip", SearchOption.TopDirectoryOnly);
 
             if (files.Length < 1)
@@ -43,6 +47,16 @@ namespace WzAddonTosser.Core
                 {
                     handler.Process();
                 }
+            }
+        }
+
+        public virtual void History()
+        {
+            var files = TosserConfig.Current.ZipFileHistoryFolder.GetFiles("*.zip", SearchOption.TopDirectoryOnly);
+
+            foreach(var addonFile in files)
+            {
+                Logger.Current.Log("{0}", addonFile.Name);
             }
         }
     }

@@ -9,6 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Install", "Install\Install.vdproj", "{6FF317ED-82D1-4F46-B2B9-70591C442405}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AE2EA018-A31A-4491-A558-7C55236D973A}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{40E43F0A-6D84-408E-88E3-2D84978A7F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Core", "Tests.Core\Tests.Core.csproj", "{DA578104-1A38-4E67-A811-5E26E71C8E30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +35,15 @@ Global
 		{61C62368-844F-4D0E-9667-3DF8C0EFA907}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FF317ED-82D1-4F46-B2B9-70591C442405}.Debug|Any CPU.ActiveCfg = Debug
 		{6FF317ED-82D1-4F46-B2B9-70591C442405}.Release|Any CPU.ActiveCfg = Release
+		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA578104-1A38-4E67-A811-5E26E71C8E30} = {40E43F0A-6D84-408E-88E3-2D84978A7F4F}
 	EndGlobalSection
 EndGlobal

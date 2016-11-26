@@ -1,0 +1,4 @@
+D:\Dev\Github\wzAddonTosser\Core\bin\Release\WzAddonTosser.Core.dll
+D:\Dev\Github\wzAddonTosser\Core\bin\Release\WzAddonTosser.Core.pdb
+D:\Dev\Github\wzAddonTosser\Core\obj\Release\WzAddonTosser.Core.dll
+D:\Dev\Github\wzAddonTosser\Core\obj\Release\WzAddonTosser.Core.pdb
