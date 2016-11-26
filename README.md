@@ -10,8 +10,17 @@ into your WoW Addons folder.
 * It does not currently keep itself up to-date.  I plan on adding this later on but it isnt there yet.  If you want the latest and greatest rev, you must install it yourself
 
 ## How it works
+> Initial Setup
+* install the application
 * edit the .Config File and set SourceDir to the folder it should look for downloaded addons in
 * edit the .Config File and set WoWDir to the folder where Warcraft is installed 
+* create a shortcut to the wzAddonTosser.exe file on your desktop
+
+> Once Configured
+* download whatever addons you want installed to WoW and place them in the folder you listed in the SourceDir
+* Double-click on the shortcut to copy the files over
+
+at this point, installing any addon to wow is just the two steps above.  Download the zips from whatever site you use for addons, and the click the shortcut
 
 ## Developers Note
 I have attempted to put all addon-specific logic in the wzAddonTosser.Core.dll which can be referenced from any .Net program.  All core objects, such as the logic for managing WoW folders as well as for examining addons are implemented as classes in that library.
