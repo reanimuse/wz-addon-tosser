@@ -1,7 +1,5 @@
-*.force
-*.manifest
+!WoW.exe
 .vs
 obj
 bin
 packages
-
