@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{897C598B-7FA3-4913-BE23-2436075419E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{61C62368-844F-4D0E-9667-3DF8C0EFA907}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Install", "Install\Install.vdproj", "{6FF317ED-82D1-4F46-B2B9-70591C442405}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AE2EA018-A31A-4491-A558-7C55236D973A}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,8 +31,6 @@ Global
 		{61C62368-844F-4D0E-9667-3DF8C0EFA907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61C62368-844F-4D0E-9667-3DF8C0EFA907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61C62368-844F-4D0E-9667-3DF8C0EFA907}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FF317ED-82D1-4F46-B2B9-70591C442405}.Debug|Any CPU.ActiveCfg = Debug
-		{6FF317ED-82D1-4F46-B2B9-70591C442405}.Release|Any CPU.ActiveCfg = Release
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,5 +41,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA578104-1A38-4E67-A811-5E26E71C8E30} = {40E43F0A-6D84-408E-88E3-2D84978A7F4F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD193352-F96F-4E12-A83B-BF8DAD85D046}
 	EndGlobalSection
 EndGlobal

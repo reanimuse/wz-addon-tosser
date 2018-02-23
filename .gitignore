@@ -1,2 +1,4 @@
 *.force
 *.manifest
+.vs/
+
