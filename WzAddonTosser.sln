@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AE2EA018-A31A-4491-A558-7C55236D973A}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -16,6 +17,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{40E43F0A-6D84-408E-88E3-2D84978A7F4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Core", "Tests.Core\Tests.Core.csproj", "{DA578104-1A38-4E67-A811-5E26E71C8E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WzWoWLib", "WzWoWLib\WzWoWLib.csproj", "{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +38,10 @@ Global
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA578104-1A38-4E67-A811-5E26E71C8E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,3 +6,12 @@ D:\Dev\Github\wzAddonTosser\Tests.Core\bin\Debug\WzAddonTosser.Core.pdb
 D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.csprojResolveAssemblyReference.cache
 D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.dll
 D:\Dev\Github\wzAddonTosser\Tests.Core\obj\Debug\Tests.Core.pdb
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\bin\Debug\Tests.Core.dll
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\bin\Debug\Tests.Core.pdb
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\bin\Debug\WzAddonTosser.Core.dll
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\bin\Debug\WzAddonTosser.Core.pdb
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\obj\Debug\Tests.Core.csprojResolveAssemblyReference.cache
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\obj\Debug\Tests.Core.csproj.CoreCompileInputs.cache
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\obj\Debug\Tests.Core.dll
+D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Tests.Core\obj\Debug\Tests.Core.pdb
