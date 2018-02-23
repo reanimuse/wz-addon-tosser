@@ -1,0 +1,1 @@
+This is here to test the case where no data or subdirectories exist

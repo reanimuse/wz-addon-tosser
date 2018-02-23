@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Core", "Tests.Core\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WzWoWLib", "WzWoWLib\WzWoWLib.csproj", "{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.WzWowLib", "Tests.WzWowLib\Tests.WzWowLib.csproj", "{0215FB76-43EE-4787-A0B2-077EEF5BDAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyWoWExe", "DummyWoWExe\DummyWoWExe.csproj", "{FD89DD9B-BE59-4A91-AEDF-6E551A05E04F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,12 +46,21 @@ Global
 		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC752FC-FA9C-488F-8B1D-C10C52D8662F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0215FB76-43EE-4787-A0B2-077EEF5BDAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0215FB76-43EE-4787-A0B2-077EEF5BDAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0215FB76-43EE-4787-A0B2-077EEF5BDAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0215FB76-43EE-4787-A0B2-077EEF5BDAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD89DD9B-BE59-4A91-AEDF-6E551A05E04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD89DD9B-BE59-4A91-AEDF-6E551A05E04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD89DD9B-BE59-4A91-AEDF-6E551A05E04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD89DD9B-BE59-4A91-AEDF-6E551A05E04F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA578104-1A38-4E67-A811-5E26E71C8E30} = {40E43F0A-6D84-408E-88E3-2D84978A7F4F}
+		{0215FB76-43EE-4787-A0B2-077EEF5BDAAE} = {40E43F0A-6D84-408E-88E3-2D84978A7F4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD193352-F96F-4E12-A83B-BF8DAD85D046}
