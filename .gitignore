@@ -1,4 +1,7 @@
 *.force
 *.manifest
-.vs/
+.vs
+obj
+bin
+packages
 
