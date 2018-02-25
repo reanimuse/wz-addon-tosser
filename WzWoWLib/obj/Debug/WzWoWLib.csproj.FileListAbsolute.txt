@@ -1,6 +1,0 @@
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\bin\Debug\WzWoWLib.dll
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\bin\Debug\WzWoWLib.pdb
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\obj\Debug\WzWoWLib.csproj.CoreCompileInputs.cache
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\obj\Debug\WzWoWLib.dll
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\obj\Debug\WzWoWLib.pdb
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\WzWoWLib\obj\Debug\WzWoWLib.csprojResolveAssemblyReference.cache
