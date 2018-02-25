@@ -3,9 +3,3 @@ D:\Dev\Github\wzAddonTosser\Core\bin\Debug\WzAddonTosser.Core.pdb
 D:\Dev\Github\wzAddonTosser\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\Dev\Github\wzAddonTosser\Core\obj\Debug\WzAddonTosser.Core.dll
 D:\Dev\Github\wzAddonTosser\Core\obj\Debug\WzAddonTosser.Core.pdb
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\bin\Debug\WzAddonTosser.Core.dll
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\bin\Debug\WzAddonTosser.Core.pdb
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\obj\Debug\WzAddonTosser.Core.dll
-D:\Dev\Games\WoW\ModTosser\WzAddonTosser\Core\obj\Debug\WzAddonTosser.Core.pdb
