@@ -1,4 +1,0 @@
-D:\Dev\TestApps\Windows\WowModtosser\WoWModTosser.Core\bin\Debug\WzAddonTosser.Core.dll
-D:\Dev\TestApps\Windows\WowModtosser\WoWModTosser.Core\bin\Debug\WzAddonTosser.Core.pdb
-D:\Dev\TestApps\Windows\WowModtosser\WoWModTosser.Core\obj\Debug\WzAddonTosser.Core.dll
-D:\Dev\TestApps\Windows\WowModtosser\WoWModTosser.Core\obj\Debug\WzAddonTosser.Core.pdb
