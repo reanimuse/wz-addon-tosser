@@ -24,7 +24,7 @@ namespace WzAddonTosser.Core
         public virtual void Process()
         {
             Logger.Current.Log(EntryType.Information, "Downloads Folder  : {0}", TosserConfig.Current.SourceFolder.FullName);
-            Logger.Current.Log(EntryType.Information, "WoW Folder        : {0}", TosserConfig.Current.WoWFolder.FullName);
+            Logger.Current.Log(EntryType.Information, "WoW Folder        : {0}", TosserConfig.Current.WoWFolder.GameRootFolder.FullName);
             Logger.Current.Log(EntryType.Information, "Backup Folder     : {0}", TosserConfig.Current.BackupFolder.FullName);
 
             var files = TosserConfig.Current.SourceFolder.GetFiles("*.zip", SearchOption.TopDirectoryOnly);

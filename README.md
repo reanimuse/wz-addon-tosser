@@ -33,4 +33,5 @@ I have attempted to put all addon-specific logic in the wzAddonTosser.Core.dll w
 * Purge old log files
 * purge old backup folders 
 
->**Note** : This is barely alpha quality at this time.  
+#### Release notes
+12/25/2018 - Updated for WoW 8.1 folder paths

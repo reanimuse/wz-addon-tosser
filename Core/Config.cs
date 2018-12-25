@@ -22,6 +22,7 @@ namespace WzAddonTosser.Core
         public DirectoryInfo ZipFileHistoryFolder { get; protected set; }
 
         public WowFolders WoWFolder { get; protected set; }
+        public WoWBuildInfo BuildInfo { get; protected set; }
 
         private static TosserConfig _current = null;
 
@@ -121,6 +122,7 @@ namespace WzAddonTosser.Core
 
             WoWFolder = new WowFolders(wowFolder);
 
+            BuildInfo = new WoWBuildInfo(WoWFolder);
         }
 
 
