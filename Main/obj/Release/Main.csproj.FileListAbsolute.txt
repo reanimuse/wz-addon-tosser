@@ -1,8 +1,0 @@
-D:\Dev\Github\wzAddonTosser\Main\bin\Release\WzAddonTosser.exe.config
-D:\Dev\Github\wzAddonTosser\Main\bin\Release\WzAddonTosser.exe
-D:\Dev\Github\wzAddonTosser\Main\bin\Release\WzAddonTosser.pdb
-D:\Dev\Github\wzAddonTosser\Main\bin\Release\WzAddonTosser.Core.dll
-D:\Dev\Github\wzAddonTosser\Main\bin\Release\WzAddonTosser.Core.pdb
-D:\Dev\Github\wzAddonTosser\Main\obj\Release\Main.csprojResolveAssemblyReference.cache
-D:\Dev\Github\wzAddonTosser\Main\obj\Release\WzAddonTosser.exe
-D:\Dev\Github\wzAddonTosser\Main\obj\Release\WzAddonTosser.pdb

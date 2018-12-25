@@ -19,15 +19,18 @@ namespace WzAddonTosser.Core
 
         public WowFolders(DirectoryInfo wowfolder)
         {
-            bool isValid = wowfolder.GetFiles("wow.exe").Length == 1;
+            //bool isValid = wowfolder.GetFiles("wow.exe").Length == 1;
+            bool isValid = wowfolder.GetFiles("World of Warcraft Launcher.exe").Length == 1;
+
             if (!isValid)
                 throw new ArgumentException("the path '" + wowfolder.FullName + "' does not contain WoW");
 
             rootFolder = wowfolder;
             this.FullName = rootFolder.FullName;
 
-            AddonsFolder = wowfolder.GetDirectory("Interface").GetDirectory("Addons");
-            AddonDataFolder = wowfolder.GetDirectory("WTF");
+            var retailFolder = wowfolder.GetDirectory("_retail_");
+            AddonsFolder = retailFolder.GetDirectory("Interface").GetDirectory("Addons");
+            AddonDataFolder = retailFolder.GetDirectory("WTF");
         }
     }
 }
