@@ -10,6 +10,7 @@ using WzAddonTosser.Core.Interfaces;
 
 namespace WzAddonTosser.Core
 {
+
     public class TosserConfig
     {
         public string ProgramName = null;
@@ -17,16 +18,26 @@ namespace WzAddonTosser.Core
         public DirectoryInfo SourceFolder { get; protected set; }
         public DirectoryInfo WorkingFolder { get; protected set; }
         public DirectoryInfo WorkingFolderBase { get; protected set; }
+
+        // TODO: Backups should use the WoWVariationFolders
+        [Obsolete]
         public DirectoryInfo BackupFolder { get; protected set; }
         public DirectoryInfo LogFolder { get; protected set; }
+
+        // TODO: Zips should use the appropriate WoWVariationFolders
+        [Obsolete]
         public DirectoryInfo ZipFileHistoryFolder { get; protected set; }
 
+        // TODO: callers of this need to be updated to use the WoWVariationFolders for the right variation
+        [Obsolete]
         public WowFolders WoWFolder { get; protected set; }
-        public WoWBuildInfo BuildInfo { get; protected set; }
+        protected WoWBuildInfo BuildInfo { get; set; }
 
         private static TosserConfig _current = null;
 
         private static Dictionary<string, bool> _invalidFolders = null;
+
+        public Dictionary<WoWVariation, ITosserConfigFolders> WoWVariationFolders { get; set; }
 
         public static TosserConfig Current
         {
@@ -89,11 +100,14 @@ namespace WzAddonTosser.Core
             ProgramName = "WowModTosser";
             BatchID = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
+            this.WoWVariationFolders = new Dictionary<WoWVariation, ITosserConfigFolders>();
+
             SourceFolder = GetDirInfo("SourceDir", true, true);
             WorkingFolderBase = GetDirInfo("WorkingDir", false, true);
             BackupFolder = GetDirInfo("BackupDir", false, true);
 
             var wowFolder = GetDirInfo("WoWDir", true, true);
+            var classicWowFolder = GetDirInfo("ClassicWoWDir", false, true);
 
 
             if (WorkingFolderBase == null)
@@ -119,8 +133,23 @@ namespace WzAddonTosser.Core
             LogFolder = MakeAppPath("Logs");
             ZipFileHistoryFolder = MakeAppPath("ZipHistory");
             
-
             WoWFolder = new WowFolders(wowFolder);
+            this.WoWVariationFolders.Add(WoWVariation.Retail, new TosserConfigFolders(wowFolder));
+
+            if (classicWowFolder == null && WoWFolder.ContainsVariation(WoWVariation.Classic))
+                classicWowFolder = wowFolder;
+
+            if (classicWowFolder != null)
+            {
+                var classicFolder = new TosserConfigFolders(classicWowFolder ?? wowFolder, WoWVariation.Classic);
+                this.WoWVariationFolders.Add(WoWVariation.Classic, classicFolder);
+            }
+
+            foreach(var item in this.WoWVariationFolders)
+            {
+                item.Value.ZipFileHistoryFolder = MakeAppPath(item.Key.ToString(), "ZipHistory");
+                item.Value.BackupFolder = MakeAppPath(this.BackupFolder, item.Key.ToString(), "ZipHistory");
+            }
 
             BuildInfo = new WoWBuildInfo(WoWFolder);
         }
@@ -154,11 +183,20 @@ namespace WzAddonTosser.Core
         }
 
 
-        protected DirectoryInfo MakeAppPath(string folderName)
+        protected DirectoryInfo MakeAppPath(string folderName, string subFolder = null)
         {
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-            var path = Path.Combine(appData, this.ProgramName, folderName);
+            var path = Path.Combine(appData, this.ProgramName, folderName, subFolder??"");
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            return new DirectoryInfo(path);
+        }
+
+        protected DirectoryInfo MakeAppPath(DirectoryInfo baseFolder, string folderName, string subFolder = null)
+        {
+            var path = Path.Combine(baseFolder.FullName, folderName, subFolder ?? "");
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 

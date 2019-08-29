@@ -71,8 +71,7 @@ namespace WzAddonTosser.Core
             return true;
         }
 
-
-
+        
         protected void ExpandArchive()
         {
             Logger.Current.Log(EntryType.Expected, "Expanding: {0}", _sourceFile.Name);
@@ -217,7 +216,7 @@ namespace WzAddonTosser.Core
 
             if (_backupFolder == null)
             {
-                _backupFolder = Path.Combine(TosserConfig.Current.BackupFolder.FullName, TosserConfig.Current.BatchID, BaseName);
+                _backupFolder = Path.Combine(mod.ConfigFolders.BackupFolder.FullName, TosserConfig.Current.BatchID, BaseName);
                 if (Directory.Exists(_backupFolder)) Directory.CreateDirectory(_backupFolder);
             }
 
@@ -227,13 +226,13 @@ namespace WzAddonTosser.Core
 
             //backup data files
 
-            var dataFiles = TosserConfig.Current.WoWFolder.AddonDataFolder.GetFiles(mod.Name + ".lua*", SearchOption.AllDirectories);
+            var dataFiles = mod.ConfigFolders.AddonDataFolder.GetFiles(mod.Name + ".lua*", SearchOption.AllDirectories);
 
             if (dataFiles.Length > 0)
             {
                 var dataFolder = BackupFolderForData();
 
-                var startPos = TosserConfig.Current.WoWFolder.AddonDataFolder.FullName.Length + 1;
+                var startPos = mod.ConfigFolders.AddonDataFolder.FullName.Length + 1;
                 foreach (var dataFile in dataFiles)
                 {
                     var relPath = dataFile.Directory.FullName.Substring(startPos);

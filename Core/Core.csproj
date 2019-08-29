@@ -47,9 +47,11 @@
     <Compile Include="AddOnHandler.cs" />
     <Compile Include="AddOnModule.cs" />
     <Compile Include="AddOnTOC.cs" />
+    <Compile Include="Interfaces\IWowFolders.cs" />
+    <Compile Include="Config\TosserConfigFolder.cs" />
     <Compile Include="WoWBuildInfo.cs" />
     <Compile Include="Common\INIReader.cs" />
-    <Compile Include="Config.cs" />
+    <Compile Include="Config\TosserConfig.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Interfaces\IWzLogger.cs" />
     <Compile Include="Logging\Logfile.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Utils.cs" />
     <Compile Include="VersionInfo.cs" />
     <Compile Include="WowFolders.cs" />
+    <Compile Include="Common\WoWVariation.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
