@@ -19,7 +19,7 @@ namespace WzAddonTosser.Core
         public string Author { get; protected set; }
         public string SavedVariablesPerCharacter { get; protected set; }
         public string RequiredMods { get; protected set; }
-        public WoWVariation Variation { get; protected set; }
+        public WoWVariation WowProgramVariation { get; protected set; }
         public List<string> Files { get; protected set; }
 
         protected Dictionary<string, string> _tocValues = null;
@@ -46,13 +46,13 @@ namespace WzAddonTosser.Core
                 this.SavedVariablesPerCharacter = GetValue("savedvariablesPercharacter");
                 this.Website = GetValue("website", "X-Website");
                 this.RequiredMods = GetValue("RequiredDeps");
-                this.Variation = WoWVariation.Retail;
+                this.WowProgramVariation = WoWVariation.Retail;
 
                 if (!string.IsNullOrWhiteSpace(this.WoWVersion))
                 {
                     var majorVer = this.WoWVersion.Substring(0, 1);
                     if (majorVer == "1" || majorVer == "2" || majorVer == "3")
-                        this.Variation = WoWVariation.Classic;
+                        this.WowProgramVariation = WoWVariation.Classic;
                 }
             }
         }

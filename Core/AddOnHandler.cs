@@ -10,19 +10,30 @@ using WzAddonTosser.Core.Logging;
 
 namespace WzAddonTosser.Core
 {
+    public class AddOnHandlerModule : AddOnModule
+    {
+        public DirectoryInfo FinalBackupFolder { get; set; }
+        public AddOnHandlerModule(DirectoryInfo source) : base(source) 
+        {
+            
+        }
+    }
+
     public class AddOnHandler
     {
         protected FileInfo _sourceFile = null;
         protected string _backupFolder = null;
 
-        public List<AddOnModule> Modules { get; protected set; }
+        public List<AddOnHandlerModule> Modules { get; protected set; }
         public string Name { get; protected set; }
         public string BaseName { get; protected set; }
         public bool IsValidAddonArchive { get; protected set; }
         public bool Processed { get; protected set; }
+        public WoWVariation WowProgramVariation { get; protected set; }
 
         public AddOnHandler(string addonZipFilePath)
         {
+            WowProgramVariation = WoWVariation.Unknown;
             var archiveFile = new FileInfo(addonZipFilePath);
             Init(archiveFile);
         }
@@ -87,10 +98,13 @@ namespace WzAddonTosser.Core
 
             var modules = TosserConfig.Current.WorkingFolder.GetDirectories();
 
+            this.WowProgramVariation = WoWVariation.Retail;
+
             foreach (var modName in modules)
             {
-                var mod = new AddOnModule(modName);
+                var mod = new AddOnHandlerModule(modName);
                 Modules.Add(mod);
+                if (mod.WowProgramVariation != WoWVariation.Retail) this.WowProgramVariation = mod.WowProgramVariation;
             }
             FixFolderDates(TosserConfig.Current.WorkingFolder, true);
         }
@@ -205,7 +219,7 @@ namespace WzAddonTosser.Core
         }
 
 
-        protected void Backup(AddOnModule mod)
+        protected void Backup(AddOnHandlerModule mod)
         {
             // not installed, nothing to backup
             if (!Directory.Exists(mod.InstallPath)) return;
@@ -214,11 +228,9 @@ namespace WzAddonTosser.Core
 
             var installedMod = new DirectoryInfo(mod.InstallPath);
 
-            if (_backupFolder == null)
-            {
-                _backupFolder = Path.Combine(mod.ConfigFolders.BackupFolder.FullName, TosserConfig.Current.BatchID, BaseName);
-                if (Directory.Exists(_backupFolder)) Directory.CreateDirectory(_backupFolder);
-            }
+            var tempBackupFolder = Path.Combine(mod.ConfigFolders.BackupFolder.FullName, TosserConfig.Current.BatchID, BaseName);
+            if (Directory.Exists(tempBackupFolder)) Directory.CreateDirectory(tempBackupFolder);
+            mod.FinalBackupFolder = new DirectoryInfo(tempBackupFolder);
 
             var modBackupFolder = BackupFolderForMod(mod);
 
@@ -343,14 +355,14 @@ namespace WzAddonTosser.Core
             }
         }
 
-        protected string BackupFolderForMod(AddOnModule mod)
+        protected string BackupFolderForMod(AddOnHandlerModule mod)
         {
-            var modBackupFolder = Path.Combine(_backupFolder, "Interface", "Addons", mod.Name);
-            if (Directory.Exists(modBackupFolder)) Directory.CreateDirectory(modBackupFolder);
+            var modBackupFolder = Path.Combine(mod.ConfigFolders.BackupFolder.FullName, "Interface", "Addons", mod.Name);
+            if (!Directory.Exists(modBackupFolder)) Directory.CreateDirectory(modBackupFolder);
             return modBackupFolder;
         }
 
-        protected string BackupFolderForData()
+        protected string BackupFolderForData(AddOnHandlerModule mod)
         {
             return Path.Combine(BackupFolder, "WTF");
         }
