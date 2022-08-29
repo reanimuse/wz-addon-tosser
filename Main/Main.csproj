@@ -69,7 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="actions.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="ConsoleIO\ColorPair.cs" />
+    <Compile Include="ConsoleIO\ConsoleLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

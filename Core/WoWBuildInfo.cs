@@ -13,6 +13,7 @@ namespace WzAddonTosser.Core
         public IReadOnlyDictionary<string, string> BuildInfoParams;
 
         public string Version { get; protected set; }
+        public Version WoWVersion { get; protected set; }
 
         public bool IsValid
         {
@@ -37,7 +38,6 @@ namespace WzAddonTosser.Core
             //Branch!STRING:0|Active!DEC:1|Build Key!HEX:16|CDN Key!HEX:16|Install Key!HEX:16|IM Size!DEC:4|CDN Path!STRING:0|CDN Hosts!STRING:0|CDN Servers!STRING:0|Tags!STRING:0|Armadillo!STRING:0|Last Activated!STRING:0|Version!STRING:0|Product!STRING:0|Build Complete!DEC:1|BGDL Complete!DEC:1
             //us | 1 | 1a0b0cbe3ed11143a44804dc8009b564 | d1f253b54f939ae242c91a7f52435b5e | 1ad5f2f0f6b209e4aa1fb4c84aebf825 || tpr / wow | us.cdn.blizzard.com level3.blizzard.com | http://level3.blizzard.com/?maxhosts=4 http://us.cdn.blizzard.com/?maxhosts=4 https://blzddist1-a.akamaihd.net/?fallback=1&maxhosts=4 https://level3.ssl.blizzard.com/?fallback=1&maxhosts=4 https://us.cdn.blizzard.com/?fallback=1&maxhosts=4|Windows x86_64 US? enUS speech?:Windows x86_64 US? enUS text?||2018-12-25T15:10:27Z|8.1.0.28833|wow|1|1
 
-
             if (string.IsNullOrEmpty(data)) return;
 
             var lines = data.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -55,10 +55,42 @@ namespace WzAddonTosser.Core
 
             BuildInfoParams = new ReadOnlyDictionary<string, string>(buildInfo);
 
-            if (BuildInfoParams.ContainsKey("version")) this.Version = BuildInfoParams["version"];
+            if (BuildInfoParams.ContainsKey("version")) {
+                this.Version = BuildInfoParams["version"];
+                this.WoWVersion = ParseWoWVersion(this.Version);
+            }
         }
 
-        protected KeyValuePair<string, string> EvaluatePair(string header, string value)
+        protected static Version ParseWoWVersion(string version)
+        {
+            if (string.IsNullOrWhiteSpace(version)) return null;
+
+            try
+            {
+                return new Version(version);
+            }
+            catch (FormatException ex)
+            {
+                // Do nothing - we'll parse it later
+            }
+
+            var versionTokens = version.Split('.');
+
+            bool skippedValue = false;
+            int majorVersion = 0;
+            int minorVersion = 0;
+            int buildVersion = 0;
+            int revisionVersion = 0;
+
+            if (versionTokens.Length > 0) skippedValue = Int32.TryParse(versionTokens[0], out majorVersion);
+            if (versionTokens.Length > 1) skippedValue = Int32.TryParse(versionTokens[1], out minorVersion);
+            if (versionTokens.Length > 2) skippedValue = Int32.TryParse(versionTokens[2], out buildVersion);
+            if (versionTokens.Length > 3) skippedValue = Int32.TryParse(versionTokens[3], out revisionVersion);
+
+            return new Version(majorVersion, minorVersion, buildVersion, revisionVersion);
+        }
+
+        protected static KeyValuePair<string, string> EvaluatePair(string header, string value)
         {
             // for now, just treat everything as strings.
 

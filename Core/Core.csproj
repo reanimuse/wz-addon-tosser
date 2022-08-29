@@ -47,6 +47,8 @@
     <Compile Include="AddOnHandler.cs" />
     <Compile Include="AddOnModule.cs" />
     <Compile Include="AddOnTOC.cs" />
+    <Compile Include="Config\SpecialFolders.cs" />
+    <Compile Include="Extensions\DirInfoExtensions.cs" />
     <Compile Include="Interfaces\IWowFolders.cs" />
     <Compile Include="Config\TosserConfigFolder.cs" />
     <Compile Include="WoWBuildInfo.cs" />

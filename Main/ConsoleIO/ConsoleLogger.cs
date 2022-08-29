@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WzAddonTosser.Core.Interfaces;
+using WzAddonTosser.Main.ConsoleIO;
 
-namespace WzAddonTosser.Main
+namespace WzAddonTosser.Main.ConsoleIO
 {
     class ConsoleLogger : IWzLogger
     {
@@ -39,8 +40,12 @@ namespace WzAddonTosser.Main
             var message = msg ?? string.Empty;
             if (args.Length > 0) message = string.Format(message, args);
 
-            Console.ForegroundColor = color;
+            var colorPair = new ConsoleColorPair(color);
+            colorPair.SetToPairColors();
+
             Console.WriteLine(message);
+
+            colorPair.ResetToOriginalColors();
         }
 
         public void LogException(Exception ex, string msg, params object[] args)

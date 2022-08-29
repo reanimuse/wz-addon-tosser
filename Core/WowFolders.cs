@@ -51,7 +51,8 @@ namespace WzAddonTosser.Core
 
         public bool ContainsVariation(WoWVariation variation)
         {
-            return Directory.Exists(BuildVariationSubfolderPath(variation));
+            var variationFolder = FindVariationFolderPath(variation);
+            return variationFolder != null;
         }
 
         protected void GetVariationFolder(WoWVariation variation)
@@ -67,6 +68,19 @@ namespace WzAddonTosser.Core
                 throw new ArgumentException($"the path '{refFolder}' does not contain the '{APP_EXE_NAME}' executable");
             VariationRootFolder = tempDir;
             this.Variation = variation;
+        }
+
+        protected DirectoryInfo FindVariationFolderPath(WoWVariation variation)
+        {
+            var refFolder = BuildVariationSubfolderPath(variation);
+            if (!Directory.Exists(refFolder)) return null;
+
+            var tempDir = new DirectoryInfo(refFolder);
+
+            var isVariationValid = tempDir.GetFiles(APP_EXE_NAME).Length == 1;
+            if (!isVariationValid) return null;
+
+            return tempDir;
         }
 
         protected void GetWoWFolders()

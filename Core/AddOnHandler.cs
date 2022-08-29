@@ -45,7 +45,7 @@ namespace WzAddonTosser.Core
 
         protected void Init(FileInfo modArchiveFile)
         {
-            Modules = new List<AddOnModule>();
+            Modules = new List<AddOnHandlerModule>();
 
             if (modArchiveFile == null)
                 throw new ArgumentException("Path to addon file cannot be empty");
@@ -69,8 +69,23 @@ namespace WzAddonTosser.Core
                 {
                     if (archive == null || archive.Entries == null || archive.Entries.Count < 1) return false;
 
+                    // it must have at least one .toc file
                     var tocs = archive.Entries.Where(x => x.Name.EndsWith(".toc", StringComparison.InvariantCultureIgnoreCase));
-                    if (tocs == null || tocs.Count() < 1) return false;
+                    if (tocs == null || tocs.Count() < 1)
+                    {
+                        Logger.Current.Log(EntryType.Unexpected, "   Archive has no .toc file defined: '{0}'", source.Name);
+                        return false;
+                    }
+
+                    // it must have at least one .toc file
+                    var luas = archive.Entries.Where(x => x.Name.EndsWith(".lua", StringComparison.InvariantCultureIgnoreCase));
+                    if (luas == null || luas.Count() < 1)
+                    {
+                        Logger.Current.Log(EntryType.Unexpected, "   Archive has no .lua files defined: '{0}'", source.Name);
+                        return false;
+                    }
+
+
                 }
             }
             catch (Exception ex)
@@ -242,7 +257,7 @@ namespace WzAddonTosser.Core
 
             if (dataFiles.Length > 0)
             {
-                var dataFolder = BackupFolderForData();
+                var dataFolder = BackupFolderForData(mod);
 
                 var startPos = mod.ConfigFolders.AddonDataFolder.FullName.Length + 1;
                 foreach (var dataFile in dataFiles)
@@ -347,8 +362,8 @@ namespace WzAddonTosser.Core
             {
                 if (_backupFolder == null)
                 {
-                    _backupFolder = Path.Combine(TosserConfig.Current.BackupFolder.FullName, TosserConfig.Current.BatchID, BaseName);
-                    if (Directory.Exists(_backupFolder)) Directory.CreateDirectory(_backupFolder);
+                    _backupFolder = Path.Combine(TosserConfig.Current.BackupFolderBase.FullName, TosserConfig.Current.BatchID, BaseName);
+                    if (!Directory.Exists(_backupFolder)) Directory.CreateDirectory(_backupFolder);
                 }
 
                 return _backupFolder;
