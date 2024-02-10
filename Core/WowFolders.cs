@@ -7,15 +7,22 @@ using System.Threading.Tasks;
 
 namespace WzAddonTosser.Core
 {
+
     // for handling WoW Folders
-    public class WowFolders
+    public class WowFolders : IWowFolders
     {
         public const string ROOT_EXE_NAME = "World of Warcraft Launcher.exe";
+        public const string APP_EXE_NAME = "WoW.exe";
         public DirectoryInfo GameRootFolder { get; protected set; }
         public DirectoryInfo AddonsFolder { get; protected set; }
         public DirectoryInfo AddonDataFolder { get; protected set; }
+        public DirectoryInfo VariationRootFolder { get; protected set; }
 
-        public WowFolders(DirectoryInfo wowfolder)
+
+        public WoWVariation Variation { get; protected set; }
+
+
+        public WowFolders(DirectoryInfo wowfolder, WoWVariation variation = WoWVariation.Retail)
         {
             bool isValid = wowfolder.GetFiles(ROOT_EXE_NAME).Length == 1;
 
@@ -24,35 +31,71 @@ namespace WzAddonTosser.Core
 
             GameRootFolder = wowfolder;
 
+            GetVariationFolder(variation);
+
             try
             {
                 GetWoWFolders();
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new ArgumentException($"the path '{wowfolder.FullName}' {ex.Message}");
             }
         }
 
-        protected void GetWoWFolders() { 
+        protected string BuildVariationSubfolderPath(WoWVariation variation)
+        {
+            var baseFolderName = variation == WoWVariation.Classic ? "_classic_" : "_retail_";
+            return Path.Combine(GameRootFolder.FullName, baseFolderName);
+        }
 
-            var refFolder = Path.Combine(GameRootFolder.FullName, "_retail_");
+        public bool ContainsVariation(WoWVariation variation)
+        {
+            var variationFolder = FindVariationFolderPath(variation);
+            return variationFolder != null;
+        }
 
+        protected void GetVariationFolder(WoWVariation variation)
+        {
+            var refFolder = BuildVariationSubfolderPath(variation);
             if (!Directory.Exists(refFolder))
-                throw new ArgumentException("does not contain the '_retail' subfolder and might be an outdated version of wow");
+                throw new ArgumentException($"Game folder does not contain the '{refFolder}' folder and might be an outdated version of wow");
 
-            var retailFolder = new DirectoryInfo(refFolder);
+            var tempDir = new DirectoryInfo(refFolder);
 
-            var interfaceFolder = retailFolder.GetDirectory("Interface");
+            var isVariationValid = tempDir.GetFiles(APP_EXE_NAME).Length == 1;
+            if (!isVariationValid)
+                throw new ArgumentException($"the path '{refFolder}' does not contain the '{APP_EXE_NAME}' executable");
+            VariationRootFolder = tempDir;
+            this.Variation = variation;
+        }
+
+        protected DirectoryInfo FindVariationFolderPath(WoWVariation variation)
+        {
+            var refFolder = BuildVariationSubfolderPath(variation);
+            if (!Directory.Exists(refFolder)) return null;
+
+            var tempDir = new DirectoryInfo(refFolder);
+
+            var isVariationValid = tempDir.GetFiles(APP_EXE_NAME).Length == 1;
+            if (!isVariationValid) return null;
+
+            return tempDir;
+        }
+
+        protected void GetWoWFolders()
+        {
+            var interfaceFolder = VariationRootFolder.GetDirectory("Interface");
             if (interfaceFolder == null)
-                throw new ArgumentException($"does not contain an {retailFolder.Name}\\Interface\\ subfolder");
+                throw new ArgumentException($"does not contain an {VariationRootFolder.Name}\\Interface\\ subfolder");
 
             AddonsFolder = interfaceFolder.GetDirectory("Addons");
             if (AddonsFolder == null)
-                throw new ArgumentException($"does not contain an {retailFolder.Name}\\Interface\\Addons\\ subfolder");
+                throw new ArgumentException($"does not contain an {VariationRootFolder.Name}\\Interface\\Addons\\ subfolder");
 
-            AddonDataFolder = retailFolder.GetDirectory("WTF");
+            AddonDataFolder = VariationRootFolder.GetDirectory("WTF");
             if (AddonDataFolder == null)
-                throw new ArgumentException($"does not contain an {retailFolder.Name}\\WTF\\ subfolder");
+                throw new ArgumentException($"does not contain an {VariationRootFolder.Name}\\WTF\\ subfolder");
         }
     }
 }

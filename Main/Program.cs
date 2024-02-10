@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WzAddonTosser.Core;
 using WzAddonTosser.Core.Common;
+using WzAddonTosser.Main.ConsoleIO;
 
 namespace WzAddonTosser.Main
 {
@@ -12,12 +13,6 @@ namespace WzAddonTosser.Main
     {
         static void Main(string[] args)
         {
-            //INIFile reader;
-            //if (args.Length < 0)
-            //{
-            //    reader = new WzAddonTosser.Core.Common.INIFile(@"D:\Dev\TestApps\Windows\WowModtosser\ModTosserMain\Config_Sample.ini");
-            //}
-
             var showHistory = false;
 
 
@@ -36,7 +31,7 @@ namespace WzAddonTosser.Main
 #else
             logger.Log(ConsoleColor.White, "{0} version {1}", wzatVersionInfo.ProductName, wzatVersionInfo.Version);
 #endif
-            logger.Log(ConsoleColor.Green, "Starting");
+            logger.Log(ConsoleColor.Green, "Starting...");
 
             var t = new AddOnTosser(logger);
 

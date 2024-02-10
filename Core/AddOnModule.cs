@@ -20,15 +20,29 @@ namespace WzAddonTosser.Core
 
         public bool Processed { get;  set;}
 
+        public WoWVariation WowProgramVariation { get; set; }
+
+        public ITosserConfigFolders ConfigFolders { get; set; }
+
 
         public AddOnModule(DirectoryInfo source)
         {
             Name = source.Name;
             WorkingDir = source;
 
-            InstallPath = Path.Combine(TosserConfig.Current.WoWFolder.AddonsFolder.FullName, Name);
-
             TOC = new AddOnTOC(source);
+
+            if (TosserConfig.Current.WoWVariationFolders.ContainsKey(TOC.WowProgramVariation))
+            {
+                this.ConfigFolders = TosserConfig.Current.WoWVariationFolders[TOC.WowProgramVariation];
+
+                InstallPath = Path.Combine(this.ConfigFolders.AddonsFolder.FullName, Name);
+            }
+            else
+            {
+                throw new ApplicationException($"the addon '{source.Name}' is for a WoW variation '{TOC.WowProgramVariation}' which is not handled in the config");
+            }
+            this.WowProgramVariation = TOC.WowProgramVariation;
         }
 
         public override string ToString()
